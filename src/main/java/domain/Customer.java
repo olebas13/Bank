@@ -1,36 +1,52 @@
 package domain;
 
+import java.util.ArrayList;
+
 public class Customer {
-    private Account[] accounts;
-    private String fullName;
+    private ArrayList<Account> accounts;
+    private String firstName;
+    private String lastName;
     private int customerNumber;
     private static int customerNumberBase = 1000;
     private int numOfAccounts;
 
-    public Customer(String fullName) {
-        accounts = new Account[10];
-        this.fullName = fullName;
+    public Customer(String firstName, String lastName) {
+        accounts = new ArrayList<Account>();
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.customerNumber = customerNumberBase++;
         this.numOfAccounts = 0;
     }
 
     public Account getAccount(int accNumber) {
-        if (accNumber < accounts.length && numOfAccounts != 0) {
-            return accounts[accNumber];
+        if (accNumber < accounts.size() && numOfAccounts != 0) {
+            return accounts.get(accNumber);
         }
         return null;
     }
 
     public void addAccount(Account acc) {
-        accounts[numOfAccounts] = acc;
+        accounts.add(acc);
         numOfAccounts++;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getNumOfAccounts() {
+        return numOfAccounts;
     }
 
     @Override
     public String toString() {
         String s = "Customer: " +
-                "fullName='" + fullName +
-                ", customerNumber=" + customerNumber +
+                "fullName=" + lastName + ", " + firstName + ", " +
+                "customerNumber=" + customerNumber +
                 ", numOfAccounts=" + numOfAccounts;
 
         for (int i = 0; i < this.numOfAccounts; i++) {

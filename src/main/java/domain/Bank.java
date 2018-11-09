@@ -1,7 +1,10 @@
 package domain;
 
+import java.util.ArrayList;
+
 public class Bank {
-    private static Customer[] customers = new Customer[1000];
+
+    private ArrayList<Customer> customers = new ArrayList<Customer>();
     private static int numOfClients = 0;
     private static Bank myBank = new Bank();
 
@@ -10,14 +13,14 @@ public class Bank {
     }
 
     public Customer getCustomer(int cusNumber) {
-        if (cusNumber < customers.length) {
-            return customers[cusNumber];
+        if (cusNumber < customers.size()) {
+            return customers.get(cusNumber);
         }
         return null;
     }
 
     public void addCustomer(Customer newCustomer) {
-        customers[numOfClients] = newCustomer;
+        customers.add(newCustomer);
         numOfClients++;
     }
 
