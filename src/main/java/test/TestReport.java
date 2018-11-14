@@ -1,6 +1,7 @@
 package test;
 
 import data.DataSource;
+import domain.AccumulateSavingsBatch;
 import reporting.CustomerReport;
 
 import java.io.IOException;
@@ -27,6 +28,12 @@ public class TestReport {
 
                 CustomerReport report = new CustomerReport();
                 report.generateReport();
+
+                AccumulateSavingsBatch jobRate = new AccumulateSavingsBatch();
+                jobRate.doBatch();
+
+                report.generateReport();
+
             } catch (IOException ioe) {
                 System.out.println("Could not load the data file.");
                 System.out.println(ioe.getMessage());

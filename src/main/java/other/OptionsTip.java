@@ -1,4 +1,4 @@
-package test;
+package other;
 
 import org.apache.commons.cli.*;
 
